@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Swift Package Manager - 构建产物
+.build/
+/Packages
+
+# Swift Package Manager - 本地配置（但保留 registries.json）
+.swiftpm/xcode/
+.swiftpm/configuration/package-state.json
+.swiftpm/configuration/package-signing-state.json
+
+# 注意：registries.json 不要忽略，应该提交
+# .swiftpm/configuration/registries.json  ← 删除这一行
+
+# Xcode
+xcuserdata/
+DerivedData/
+*.xcodeproj
+*.xcworkspace
+
+# 其他
+.netrc
