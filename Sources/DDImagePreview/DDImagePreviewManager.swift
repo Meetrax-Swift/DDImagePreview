@@ -23,7 +23,7 @@ public final class DDImagePreviewManager: ObservableObject {
     @Published public var initialIndex: Int = 0
 
     /// 预览配置
-    @Published public var config: DDImagePreviewConfig = .default
+    @Published public var config: DDImagePreviewConfig? = nil
 
     // MARK: - 私有属性
 
@@ -37,20 +37,20 @@ public final class DDImagePreviewManager: ObservableObject {
     public static func show(
         sources: [DDImageSource],
         initialIndex: Int = 0,
-        config: DDImagePreviewConfig = .default
+        config: DDImagePreviewConfig? = nil
     ) {
         guard !sources.isEmpty else { return }
 
         shared.sources = sources
         shared.initialIndex = min(initialIndex, max(0, sources.count - 1))
-        shared.config = config
+        shared.config = config ?? DDImagePreviewConfig()
         shared.isPresented = true
     }
 
     /// 显示单张图片预览
     public static func show(
         source: DDImageSource,
-        config: DDImagePreviewConfig = .default
+        config: DDImagePreviewConfig? = nil
     ) {
         show(sources: [source], config: config)
     }
@@ -89,7 +89,7 @@ extension DDImagePreviewManager {
 
                         self.sources = []
                         self.initialIndex = 0
-                        self.config = .default
+                        self.config = DDImagePreviewConfig()
                     }
                 }
             }

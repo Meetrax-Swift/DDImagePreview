@@ -99,7 +99,7 @@ public struct DDImagePreviewConfig {
     /// 当图片缩放的时候是否隐藏自定的试图
     public var isShowCustomViewWhenZoom: Bool = false
     /// 默认配置
-    public static let `default` = DDImagePreviewConfig()
+//    public static let `default` = DDImagePreviewConfig()
     
     
     /// 图片预览配置
@@ -119,7 +119,7 @@ public struct DDImagePreviewConfig {
         ignoreSafeArea: Bool = DDImagePreViewConstants.ignoreSafeArea,
         backgroundColor: Color = DDImagePreViewConstants.backgroundColor,
         isCanSave: Bool = false,
-        indicator: DDPageIndicatorConfig = .default,
+        indicator: DDPageIndicatorConfig? = nil,
         placeholderImage: Image? = DDImagePreViewConstants.placehoderImage,
         errorPlaceholderImage: Image? = DDImagePreViewConstants.errorPlaceholderImage,
         maxScale: CGFloat = DDImagePreViewConstants.maxScale,
@@ -131,7 +131,7 @@ public struct DDImagePreviewConfig {
         self.ignoreSafeArea = ignoreSafeArea
         self.backgroundColor = backgroundColor
         self.isCanSave = isCanSave
-        self.indicator = indicator
+        self.indicator = indicator ?? DDPageIndicatorConfig()
         self.maxScale = maxScale
         self.doubleTapScale = doubleTapScale
         self.minScale = minScale

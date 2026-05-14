@@ -249,13 +249,13 @@ extension DDImagePreview where CustomView == EmptyView {
         isPresented: Binding<Bool>,
         sources: [DDImageSource],
         initialIndex: Int = 0,
-        config: DDImagePreviewConfig = .default
+        config: DDImagePreviewConfig? = nil
     ) {
         self.init(
             _internal: isPresented,
             sources: sources,
             initialIndex: initialIndex,
-            config: config,
+            config: config ?? DDImagePreviewConfig(),
             custom: nil
         )
     }
@@ -267,14 +267,14 @@ extension DDImagePreview {
         isPresented: Binding<Bool>,
         sources: [DDImageSource],
         initialIndex: Int = 0,
-        config: DDImagePreviewConfig = .default,
+        config: DDImagePreviewConfig? = nil,
         @ViewBuilder custom: @escaping (_ current: Int) -> CustomView
     ) {
         self.init(
             _internal: isPresented,
             sources: sources,
             initialIndex: initialIndex,
-            config: config,
+            config: config ?? DDImagePreviewConfig(),
             custom: custom
         )
     }

@@ -97,13 +97,13 @@ public struct DDImagePreviewModifier<CustomView: View>: ViewModifier {
         isPresented: Binding<Bool>,
         sources: [DDImageSource],
         initialIndex: Int = 0,
-        config: DDImagePreviewConfig = .default,
+        config: DDImagePreviewConfig? = nil,
         @ViewBuilder custom: @escaping (_ current: Int) -> CustomView
     ) {
         self._isPresented = isPresented
         self.sources = sources
         self.initialIndex = initialIndex
-        self.config = config
+        self.config = config ?? DDImagePreviewConfig()
         self.custom = custom
     }
     
@@ -112,12 +112,12 @@ public struct DDImagePreviewModifier<CustomView: View>: ViewModifier {
         isPresented: Binding<Bool>,
         sources: [DDImageSource],
         initialIndex: Int = 0,
-        config: DDImagePreviewConfig = .default
+        config: DDImagePreviewConfig? = nil
     ) where CustomView == AnyView {
         self._isPresented = isPresented
         self.sources = sources
         self.initialIndex = initialIndex
-        self.config = config
+        self.config = config ?? DDImagePreviewConfig()
         self.custom = nil
     }
     
@@ -171,7 +171,7 @@ public struct DDGlobalImagePreviewModifier: ViewModifier {
                 )
                 .transition(.opacity)
                 .zIndex(9999)
-                .modifier(DDConditionalIgnoreSafeArea(ignore: manager.config.ignoreSafeArea))
+                .modifier(DDConditionalIgnoreSafeArea(ignore: manager.config?.ignoreSafeArea ?? true))
             }
         }
         .animation(.easeInOut(duration: 0.25), value: manager.isPresented)
@@ -206,7 +206,7 @@ extension View {
         isPresented: Binding<Bool>,
         sources: [DDImageSource],
         initialIndex: Int = 0,
-        config: DDImagePreviewConfig = .default,
+        config: DDImagePreviewConfig? = nil,
         @ViewBuilder custom: @escaping (_ current: Int) -> CustomView
     ) -> some View {
         modifier(DDImagePreviewModifier(
@@ -229,7 +229,7 @@ extension View {
         isPresented: Binding<Bool>,
         sources: [DDImageSource],
         initialIndex: Int = 0,
-        config: DDImagePreviewConfig = .default
+        config: DDImagePreviewConfig? = nil
     ) -> some View {
         modifier(DDImagePreviewModifier(
             isPresented: isPresented,
@@ -249,7 +249,7 @@ extension View {
     public func ddImagePreview<CustomView: View>(
         isPresented: Binding<Bool>,
         source: DDImageSource,
-        config: DDImagePreviewConfig = .default,
+        config: DDImagePreviewConfig? = nil,
         @ViewBuilder custom: @escaping (_ current: Int) -> CustomView
     ) -> some View {
         ddImagePreview(
@@ -269,7 +269,7 @@ extension View {
     public func ddImagePreview(
         isPresented: Binding<Bool>,
         source: DDImageSource,
-        config: DDImagePreviewConfig = .default
+        config: DDImagePreviewConfig? = nil
     ) -> some View {
         ddImagePreview(
             isPresented: isPresented,
@@ -289,7 +289,7 @@ extension View {
     public func ddPreview<CustomView: View>(
         _ source: DDImageSource,
         isPresented: Binding<Bool>,
-        config: DDImagePreviewConfig = .default,
+        config: DDImagePreviewConfig? = nil,
         @ViewBuilder custom: @escaping (_ current: Int) -> CustomView
     ) -> some View {
         ddImagePreview(
@@ -309,7 +309,7 @@ extension View {
     public func ddPreview<CustomView: View>(
         _ source: DDImageSource,
         isPresented: Binding<Bool>,
-        config: DDImagePreviewConfig = .default
+        config: DDImagePreviewConfig? = nil
     ) -> some View {
         ddImagePreview(
             isPresented: isPresented,
@@ -330,7 +330,7 @@ extension View {
         _ sources: [DDImageSource],
         isPresented: Binding<Bool>,
         initialIndex: Int = 0,
-        config: DDImagePreviewConfig = .default,
+        config: DDImagePreviewConfig? = nil,
         @ViewBuilder custom: @escaping (_ current: Int) -> CustomView
     ) -> some View {
         ddImagePreview(
@@ -353,7 +353,7 @@ extension View {
         _ sources: [DDImageSource],
         isPresented: Binding<Bool>,
         initialIndex: Int = 0,
-        config: DDImagePreviewConfig = .default
+        config: DDImagePreviewConfig? = nil
     ) -> some View {
         ddImagePreview(
             isPresented: isPresented,
