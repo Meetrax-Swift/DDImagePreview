@@ -98,7 +98,7 @@ public struct DDImagePreview<CustomView: View>: View {
                             onDragEnd: handleDragEnd)
                         .tag(index)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .onChange(of: isShowIndicator) { oldValue, newValue in
+                        .onChange(of: isShowIndicator) {newValue in
                             withAnimation {
                                 opacity = newValue ? 1 : 0
                             }
@@ -150,19 +150,20 @@ public struct DDImagePreview<CustomView: View>: View {
         .sheet(isPresented: $showSaveSheet, content: {
             saveActionSheet
                 .presentationDetents([.height(sheetItemHeight * 2 + 15)])
-            // 2. 设置圆角
-                .presentationCornerRadius(20)
-            // 3. 显示拖拽指示器
-                .presentationDragIndicator(.visible) // 或 .hidden
-            // 4. 背景交互
-                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
-            // 5. 背景色（iOS 16.4+）
-                .presentationBackground(
-                    Color.white // 或 Color, ShapeStyle
-                )
+                // 2. 显示拖拽指示器
+                .presentationDragIndicator(.hidden) // 或 .hidden
+                .background(.white)
+//                // 3. 设置圆角 （iOS 16.4+）
+//                .presentationCornerRadius(20)
+//                // 4. 背景交互 （iOS 16.4+）
+//                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+//                // 5. 背景色（iOS 16.4+）
+//                .presentationBackground(
+//                    Color.white // 或 Color, ShapeStyle
+//                )
             
         })
-        .onChange(of: currentIndex) { oldValue, newValue in
+        .onChange(of: currentIndex) {newValue in
             resetZoomState()
         }
     }
@@ -199,7 +200,7 @@ extension DDImagePreview {
             HStack(spacing: 8) {
                 Text(saveToastMessage)
                     .font(.system(size: 15))
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .lineLimit(2)
             }
             .padding(.horizontal, 16)
@@ -221,7 +222,7 @@ extension DDImagePreview {
             } label: {
                 Text("保存到相册")
                     .font(.system(size: 15))
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.black)
                     .frame(maxWidth: .infinity, minHeight: sheetItemHeight)
             }
             
@@ -234,7 +235,7 @@ extension DDImagePreview {
             } label: {
                 Text("取消")
                     .font(.system(size: 17, weight: .medium))
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
                     .frame(maxWidth: .infinity, minHeight: sheetItemHeight)
             }
         }

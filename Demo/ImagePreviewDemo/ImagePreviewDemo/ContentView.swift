@@ -106,17 +106,17 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 Text("我是一个自定义视图， 你可以写任何东西\(current)")
-                    .foregroundColor(current % 2 == 0 ? .purple : .red)
+                    .foregroundStyle(current % 2 == 0 ? .purple : .red)
                 Button {
                     print(current)
                 } label: {
                     Text("click me")
-                        .foregroundColor(current % 2 == 0 ? .purple : .red)
+                        .foregroundStyle(current % 2 == 0 ? .purple : .red)
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
                 .background(Color.white.opacity(0.5))
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
                 .cornerRadius(8)
                 Spacer()
                     .frame(height: 100)

@@ -141,6 +141,6 @@ public struct DDGridImageView: View {
         DDImagePreViewConstants.placehoderImage
             .resizable()
             .scaledToFill()
-            .foregroundColor(.gray.opacity(0.3))
+            .foregroundStyle(.gray.opacity(0.3))
     }
 }

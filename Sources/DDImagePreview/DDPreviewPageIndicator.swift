@@ -47,13 +47,13 @@ public struct DDPreviewPageIndicator: View {
                 }
             } else {
                 Text("\(currentIndex + 1)")
-                    .foregroundColor(color)
+                    .foregroundStyle(color)
                     .font(.system(size: 17, weight: .medium))
                 Text("/")
-                    .foregroundColor(color)
+                    .foregroundStyle(color)
                     .font(.system(size: 16, weight: .medium))
                 Text("\(totalCount)")
-                    .foregroundColor(color)
+                    .foregroundStyle(color)
                     .font(.system(size: 17, weight: .medium))
             }
             

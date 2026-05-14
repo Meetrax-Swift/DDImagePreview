@@ -224,7 +224,7 @@ extension DDZoomableImageView {
                 Image(uiImage: placeholderImage)
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundStyle(.white.opacity(0.5))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             // 然后使用传入的 placeholder
@@ -232,7 +232,7 @@ extension DDZoomableImageView {
                 placeholder
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundStyle(.white.opacity(0.5))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 Color.gray.opacity(0.3)
@@ -250,7 +250,7 @@ extension DDZoomableImageView {
             if loadProgress > 0 {
                 Text("\(Int(loadProgress * 100))%")
                     .font(.caption)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .padding(.top, 8)
             }
         }
@@ -261,12 +261,12 @@ extension DDZoomableImageView {
             if let errorPlaceholder = errorPlaceholder {
                 errorPlaceholder
                     .font(.system(size: 50))
-                    .foregroundColor(.white.opacity(0.7))
+                    .foregroundStyle(.white.opacity(0.7))
             }
             
             Text("图片加载失败")
                 .font(.system(size: 16))
-                .foregroundColor(.white.opacity(0.7))
+                .foregroundStyle(.white.opacity(0.7))
             
             Button("重试") {
                 loadImage()
@@ -274,7 +274,7 @@ extension DDZoomableImageView {
             .padding(.horizontal, 20)
             .padding(.vertical, 10)
             .background(Color.white.opacity(0.2))
-            .foregroundColor(.white)
+            .foregroundStyle(.white)
             .cornerRadius(8)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
