@@ -85,17 +85,24 @@ struct ContentView: View {
             }
             
             Spacer()
-            
             HStack {
-                // 自定义九宫格视图
-                DDGridImageView(sources: sources, columns: 4, spacing: 0) { current in
-                    //方案一： 通过API调用预览界面
+                // 自定义九宫格视图 默认3列
+                DDGridImageView(sources: sources) { current in
+                    //方法-： 通过API调用预览界面
                     DDImagePreviewManager.show(sources: sources,
                                                initialIndex: current,
-                                               config: DDImagePreviewConfig(ignoreSafeArea: false,
-                                                                            isCanSave: true))
+                                               config: DDImagePreviewConfig(isCanSave: true,
+                                                                            indicator: DDPageIndicatorConfig(style: .dot),
+                                                                            isShowCustomViewWhenZoom: false))
                 }
-            }.padding(.horizontal, 50)
+            }
+            
+            Spacer()
+            HStack {
+                DDGridImageView(sources: sources, columns: 4, spacing: 10) { current in
+                    DDImagePreviewManager.show(sources: sources, initialIndex: current)
+                }
+            }
             
         }
         // 方案二 可以添加自定视图
