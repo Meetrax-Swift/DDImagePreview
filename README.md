@@ -18,7 +18,9 @@
 
 ## 预览效果
 
-![DDImagePreview Demo](https://github.com/user-attachments/assets/1c2469ba-8069-40b1-8d76-560cf28b5b57)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1c2469ba-8069-40b1-8d76-560cf28b5b57" width="300" alt="DDImagePreview Demo">
+</p>
 
 ## 系统要求
 
