@@ -16,10 +16,13 @@
 - ✅ 九宫格网格展示视图
 - ✅ 支持自定义视图注入
 
+## 预览效果
+
+![DDImagePreview Demo](https://github.com/user-attachments/assets/1c2469ba-8069-40b1-8d76-560cf28b5b57)
+
 ## 系统要求
 
 - iOS 17.0+
-- Swift 6.2+
 
 ## 通过 Swift Package Manager 导入
 
@@ -62,6 +65,7 @@ import DDImagePreview
 
 struct ContentView: View {
     @State private var isPresented = false
+    @State private var previewIndex: Int = 0
     let imageSources = [
         DDImageSource.url("https://example.com/image1.jpg"),
         DDImageSource.url("https://example.com/image2.jpg"),
@@ -72,13 +76,7 @@ struct ContentView: View {
         Button("预览图片") {
             isPresented = true
         }
-        .fullScreenCover(isPresented: $isPresented) {
-            DDImagePreview(
-                isPresented: $isPresented,
-                sources: imageSources,
-                initialIndex: 0
-            )
-        }
+        .ddImagePreview(isPresented: $isPresented, sources: imageSources, initialIndex: previewIndex)
     }
 }
 ```
@@ -108,7 +106,7 @@ struct MyApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .ddImagePreview()
+                .ddWithGlobalPreview()
         }
     }
 }
