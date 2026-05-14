@@ -24,7 +24,7 @@
 
 ## 系统要求
 
-- iOS 17.0+
+- iOS 16.0+
 
 ## 通过 Swift Package Manager 导入
 
